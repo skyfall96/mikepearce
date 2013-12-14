@@ -1,0 +1,19 @@
+{
+  "name": "mikepearce",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "server.js"
+  },
+  "dependencies": {
+    "express": "3.x",
+    "underscore": "~1.5.2",
+    "stylus": "~0.41.3",
+    "ejs": "~0.8.5",
+    "path": "~0.4.9"
+  },
+  "engines": {
+    "node": "0.10.20",
+    "npm": "1.3.11"
+  }
+}
