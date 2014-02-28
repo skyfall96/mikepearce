@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 
@@ -23,7 +22,7 @@ if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+require('./routes/routes')(app);
 
 var server = http.createServer(app).listen(MP.getPort(), function(){
 	console.log('Express server listening on port ' + MP.getPort());
