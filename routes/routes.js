@@ -1,4 +1,4 @@
 module.exports = function(app) {
-	require('./views/views')(app);
-	require('./api/api')(app);
+	require('./views/viewRoutes')(app);
+	require('./api/apiRoutes')(app);
 };

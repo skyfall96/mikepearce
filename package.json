@@ -10,7 +10,8 @@
     "underscore": "~1.5.2",
     "stylus": "~0.41.3",
     "ejs": "~0.8.5",
-    "path": "~0.4.9"
+    "path": "~0.4.9",
+    "passport-google": "^0.3.0"
   },
   "engines": {
     "node": "0.10.20",
