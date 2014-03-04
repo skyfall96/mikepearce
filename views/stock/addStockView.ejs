@@ -1,1 +1,49 @@
-Add Stock EJS
+<div>
+	<h2>Add a Stock to your Portfolio</h2>
+
+	<form>
+		<label for="symbol">
+			Stock Symbol
+			<input type="text" id="symbol" value="" placeholder="TSLA" />
+		</label>
+
+		<fieldset>
+			<legend>Purchase Information</legend>
+			<label for="purchaseDate">
+				Purchase Date
+				<input type="date" id="purchaseDate" placeholder="mm/dd/yyyy" />
+			</label>
+
+			<label for="purchasePrice">
+				Purchase Price per Share
+				<input type="number" id="purchasePrice" value="" placeholder="34.26" />
+			</label>
+
+			<label for="purchaseQuantity">
+				Purchase Quantity
+				<input type="number" id="purchaseQuantity" value="" placeholder="100" />
+			</label>
+		</fieldset>
+
+		<fieldset>
+			<legend>Sell Information</legend>
+			<label for="sellDate">
+				Sell Date
+				<input type="date" id="sellDate" placeholder="mm/dd/yyyy" />
+			</label>
+
+			<label for="sellPrice">
+				Sell Price
+				<input type="number" id="sellPrice" value="" placeholder="163.23" />
+			</label>
+
+			<label for="sellQuantity">
+				Sell Quantity
+				<input type="number" id="sellQuantity" value="" placeholder="100" />
+			</label>
+		</fieldset>
+
+		<input type="submit" value="Save Stock" />
+	</form>
+</div>
+<link rel="stylesheet" href="/stylesheets/forms.css"></link>

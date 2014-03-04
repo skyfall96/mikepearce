@@ -8,7 +8,7 @@ var MP = {
 	setupCommandLine: function() {
 		this.$commandLine = document.getElementById('commandLine');
 
-		this.$commandLine.onkeyup = _.bind(this.listenToCommandLine, this);
+		this.$commandLine.addEventListener('keyup', _.bind(this.listenToCommandLine, this));
 
 		this.$commandLine.focus();
 	},
@@ -41,7 +41,10 @@ var MP = {
 	},
 
 	executeAlphaSequence: function() {
-
+		var alphaModal = new MP.modal({
+			url: 'http://localhost:8080/view/stock/add'
+		});
+		alphaModal.open();
 	},
 
 	executeBetaSequence: function() {
