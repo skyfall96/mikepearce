@@ -2,6 +2,7 @@ module.exports = function(req, res, url, badgeReviews) {
 	var request = require('request');
 	var cheerio = require('cheerio');
 	var chunk = require('./chunkReviews');
+	var format = require('./formatReviews');
 
 	request(url, function (error, response, html) {
 		if (!error && response.statusCode == 200) {
@@ -35,7 +36,7 @@ module.exports = function(req, res, url, badgeReviews) {
 			if (nextPageUrl) {
 				chunk(req, res, nextPageUrl, badgeReviews)
 			} else {
-				callback(badgeReviews);
+				format(req, res, badgeReviews);
 			}
 		}
 	});

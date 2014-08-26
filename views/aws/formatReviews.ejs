@@ -1,0 +1,19 @@
+<div id="honest-amazon-code">
+	<ul class="nav nav-tabs" role="tablist">
+	<% var i = 0; %> 
+	<% for (var key in badgeReviews) { %>
+		<li<% if (i === 0) { %> class="active"<% } %>><a href="#ha-<%= i %>"role="tab" data-toggle="tab"><%= badgeReviews[key].name %></a></li>
+		<% i += 1; %>
+	<% } %>
+	</ul>
+
+	<div class="tab-content">
+	<% var i = 0; %> 
+	<% for (var key in badgeReviews) { %>
+		<div class="tab-pane<% if (i === 0) { %> active<% } %>" id="ha-<%= i %>">
+			<%- badgeReviews[key].reviews.join('') %>
+		</div>
+		<% i += 1; %>
+	<% } %>
+	</div>
+</div>
