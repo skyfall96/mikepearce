@@ -52,12 +52,44 @@ module.exports = function(req, res, url, badgeReviews, timeStart) {
 	}
 
 	function getStars($review) {
+		var stars = getSwSpriteStars($review);
+
+		if (!stars) {
+			stars = getIconStars($review);
+		}
+
+		if (!stars) {
+			return 0;
+		}
+
+		return stars;
+	}
+
+	function getSwSpriteStars($review) {
 		var $stars = $review.find('.swSprite');
+		var starsClasses = $stars.attr('class');
 		
-		var classes = $stars.attr('class').split(' ');
+		if (starsClasses && starsClasses.length) {
+			var classes = starsClasses.split(' ');
+			
+			if (classes.length >= 2) {
+				return +classes[1].substr(7, 1);
+			}
+		}
+
+		return 0;
+	}
+
+	function getIconStars($review) {
+		var $stars = $review.find('.a-icon-star');
+		var starsClasses = $stars.attr('class');
 		
-		if (classes.length >= 2) {
-			return +classes[1].substr(7, 1);
+		if (starsClasses && starsClasses.length) {
+			var classes = starsClasses.split(' ');
+			
+			if (classes.length >= 3) {
+				return +classes[2].substr(-1);
+			}
 		}
 
 		return 0;
