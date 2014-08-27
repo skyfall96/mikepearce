@@ -39,7 +39,7 @@ module.exports = function(req, res, asin) {
 				var allLinksUrl = $('.crAvgStars').find('a').attr('href');
 				
 				if (allLinksUrl) {
-					chunk(req, res, allLinksUrl, badgeReviews);
+					chunk(req, res, allLinksUrl, badgeReviews, new Date());
 				}
 			}
 		});

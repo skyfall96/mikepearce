@@ -1,4 +1,4 @@
-module.exports = function(req, res, url, badgeReviews) {
+module.exports = function(req, res, url, badgeReviews, timeStart) {
 	var request = require('request');
 	var cheerio = require('cheerio');
 	var chunk = require('./chunkReviews');
@@ -25,25 +25,42 @@ module.exports = function(req, res, url, badgeReviews) {
 					if (!badgeReviews[badgeName]) {
 						badgeReviews[badgeName] = { 
 							reviews: [],
+							stars: [],
 							name: badgeName.replace('(', '').replace(')', '')
 						};
 					}
 
+					badgeReviews[badgeName].stars.push(getStars($review));
 					badgeReviews[badgeName].reviews.push($review.html());
 				});
 			});
 
-			if (nextPageUrl) {
-				chunk(req, res, nextPageUrl, badgeReviews)
+			if (nextPageUrl && !isTimeToStop(timeStart)) {
+				chunk(req, res, nextPageUrl, badgeReviews, timeStart)
 			} else {
 				format(req, res, badgeReviews);
 			}
 		}
 	});
 
-	function callback(badgeReviews) {
-		res.json(badgeReviews);
-		res.end();
+	function isTimeToStop(timeStart) {
+		if ((new Date()) - timeStart < 20000) {
+			return false;
+		}
+
+		return true;
+	}
+
+	function getStars($review) {
+		var $stars = $review.find('.swSprite');
+		
+		var classes = $stars.attr('class').split(' ');
+		
+		if (classes.length >= 2) {
+			return +classes[1].substr(7, 1);
+		}
+
+		return 0;
 	}
 
 	function getNextPageUrl($) {
@@ -56,21 +73,3 @@ module.exports = function(req, res, url, badgeReviews) {
 		return false;
 	}
 }
-
-/*
-TODO:
-Have the main url for the reviews, need to:
-	Get the set of reviews on each page
-===>Need to figure out what to use to put a review into its respective buckets - potentially a review could be in multiple buckets as well, not going to worry about that right now, maybe only show reviews in each bucket at one time
-	Need to figure out how to transport each review...html string?
-	Need to figure out the rating
-	Put each review in its appropriate bucket
-	Go to next page, up to 5 pages to start, maybe 10 at the end
-	Send the response back in JSON
-
-With the response, write out the reviews
-Have a checkbox for each review type
-Use client side filtering to display each type of review or all of them
-
-Figure out a way to monetize clicks
-*/

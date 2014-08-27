@@ -2,7 +2,11 @@
 	<ul class="nav nav-tabs" role="tablist">
 	<% var i = 0; %> 
 	<% for (var key in badgeReviews) { %>
-		<li<% if (i === 0) { %> class="active"<% } %>><a href="#ha-<%= i %>"role="tab" data-toggle="tab"><%= badgeReviews[key].name %></a></li>
+		<li<% if (i === 0) { %> class="active"<% } %>><a href="#ha-<%= i %>"role="tab" data-toggle="tab">
+			<%= badgeReviews[key].name %>
+			(<%= badgeReviews[key].reviews.length %>)<br />
+			<%= (_.reduce(badgeReviews[key].stars, function(memo, num) { return memo + num; }, 0) / badgeReviews[key].stars.length) %> stars
+		</a></li>
 		<% i += 1; %>
 	<% } %>
 	</ul>
@@ -11,7 +15,7 @@
 	<% var i = 0; %> 
 	<% for (var key in badgeReviews) { %>
 		<div class="tab-pane<% if (i === 0) { %> active<% } %>" id="ha-<%= i %>">
-			<%- badgeReviews[key].reviews.join('') %>
+			<%- badgeReviews[key].reviews.join('<hr />') %>
 		</div>
 		<% i += 1; %>
 	<% } %>
