@@ -16,11 +16,19 @@ module.exports = function(req, res, url, badgeReviews, timeStart) {
 				var $reviewerBadges = $review.find('a[target=AmazonHelp]');
 
 				$reviewerBadges.each(function() {
-					var badgeName = $(this).text().toLowerCase();
+					var badgeName = $(this).text();
+
+					if (!badgeName || badgeName.length <= 2) {
+						return;
+					}
+
+					badgeName = badgeName.toLowerCase();
 
 					if (badgeName === 'what\'s this?') { //verified purchase
 						return;
 					}
+
+					if (badgeName)
 
 					if (!badgeReviews[badgeName]) {
 						badgeReviews[badgeName] = { 
