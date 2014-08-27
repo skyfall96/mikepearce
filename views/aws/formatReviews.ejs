@@ -5,7 +5,7 @@
 		<li<% if (i === 0) { %> class="active"<% } %>><a href="#ha-<%= i %>"role="tab" data-toggle="tab">
 			<%= badgeReviews[key].name %>
 			(<%= badgeReviews[key].reviews.length %>)<br />
-			<%= (_.reduce(badgeReviews[key].stars, function(memo, num) { return memo + num; }, 0) / badgeReviews[key].stars.length) %> stars
+			<%= parseFloat(_.reduce(badgeReviews[key].stars, function(memo, num) { return memo + num; }, 0) / badgeReviews[key].stars.length).toFixed(2) %> stars
 		</a></li>
 		<% i += 1; %>
 	<% } %>
