@@ -1,11 +1,13 @@
 <div id="honest-amazon-code">
 	<ul class="nav nav-tabs" role="tablist">
-	<% var i = 0; %> 
+	<% var i = 0; %>
+	<% var allRatings = []; %>
 	<% for (var key in badgeReviews) { %>
 		<li<% if (i === 0) { %> class="active"<% } %>><a href="#ha-<%= i %>"role="tab" data-toggle="tab">
 			<%= badgeReviews[key].name %>
 			(<%= badgeReviews[key].reviews.length %>)<br />
 			<%= parseFloat(_.reduce(badgeReviews[key].stars, function(memo, num) { return memo + num; }, 0) / badgeReviews[key].stars.length).toFixed(2) %> stars
+			<% allRatings = allRatings.concat(badgeReviews[key].stars) %>
 		</a></li>
 		<% i += 1; %>
 	<% } %>
@@ -20,4 +22,6 @@
 		<% i += 1; %>
 	<% } %>
 	</div>
+
+	<p><%= pages %> pages of customer reviews analyzed in <%= ((new Date()) - timeStart) / 1000 %> seconds. <%= parseFloat(_.reduce(allRatings, function(memo, num) { return memo + num; }, 0) / allRatings.length).toFixed(2) %> average stars for excerpted reviews.</p>
 </div>

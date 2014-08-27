@@ -1,4 +1,4 @@
-module.exports = function(req, res, url, badgeReviews, timeStart) {
+module.exports = function(req, res, url, badgeReviews, timeStart, pages) {
 	var request = require('request');
 	var cheerio = require('cheerio');
 	var chunk = require('./chunkReviews');
@@ -10,6 +10,8 @@ module.exports = function(req, res, url, badgeReviews, timeStart) {
 
 			var $productReviews = $('#productReviews td > div');
 			var nextPageUrl = getNextPageUrl($);
+
+			pages += 1;
 
 			$productReviews.each(function() {
 				var $review = $(this);
@@ -44,9 +46,9 @@ module.exports = function(req, res, url, badgeReviews, timeStart) {
 			});
 
 			if (nextPageUrl && !isTimeToStop(timeStart)) {
-				chunk(req, res, nextPageUrl, badgeReviews, timeStart)
+				chunk(req, res, nextPageUrl, badgeReviews, timeStart, pages)
 			} else {
-				format(req, res, badgeReviews);
+				format(req, res, badgeReviews, timeStart, pages);
 			}
 		}
 	});
