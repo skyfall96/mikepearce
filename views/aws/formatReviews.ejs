@@ -23,5 +23,12 @@
 	<% } %>
 	</div>
 
-	<p><%= pages %> pages of customer reviews analyzed in <%= ((new Date()) - timeStart) / 1000 %> seconds. <%= parseFloat(_.reduce(allRatings, function(memo, num) { return memo + num; }, 0) / allRatings.length).toFixed(2) %> average stars for excerpted reviews.</p>
+	<p>
+		<%= pages %> pages of customer reviews analyzed in <%= ((new Date()) - timeStart) / 1000 %> seconds.
+		<% if (allRatings.length) { %>
+		<%= parseFloat(_.reduce(allRatings, function(memo, num) { return memo + num; }, 0) / allRatings.length).toFixed(2) %> average stars for excerpted reviews.
+		<% } else { %>
+		<strong id="ha-noResults">No reviews with badges found.</strong> If there are a high number of reviews, that is a strong indicator of fake reviews.
+		<% } %>
+	</p>
 </div>
