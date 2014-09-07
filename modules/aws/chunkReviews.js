@@ -56,7 +56,7 @@ module.exports = function(req, res, url, badgeReviews, timeStart, pages, reviewC
 	});
 
 	function isTimeToStop(timeStart) {
-		if ((new Date()) - timeStart < 20000) {
+		if ((new Date()) - timeStart < 10000) {
 			return false;
 		}
 
