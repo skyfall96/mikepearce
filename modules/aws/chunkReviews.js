@@ -6,6 +6,9 @@ module.exports = function(req, res, url, badgeReviews, timeStart, pages, reviewC
 
 	request(url, function (error, response, html) {
 		if (!error && response.statusCode == 200) {
+			console.log('pages', pages);
+			console.log('reviewCount', reviewCount);
+			
 			var $ = cheerio.load(html);
 
 			var $productReviews = $('#productReviews td > div');
@@ -52,6 +55,9 @@ module.exports = function(req, res, url, badgeReviews, timeStart, pages, reviewC
 			} else {
 				format(req, res, badgeReviews, timeStart, pages, reviewCount);
 			}
+		} else {
+			console.log(error);
+			res.end();
 		}
 	});
 

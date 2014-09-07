@@ -31,9 +31,11 @@ module.exports = function(req, res, asin) {
 		}
 
 		var url = result.Items.Item.CustomerReviews.IFrameURL;
+		console.log('url', url);
 
 		request(url, function (error, response, html) {
 			if (!error && response.statusCode == 200) {
+				console.log('Got a response!');
 				var $ = cheerio.load(html);
 
 				var allLinksUrl = $('.crAvgStars').find('a').attr('href');
@@ -41,6 +43,9 @@ module.exports = function(req, res, asin) {
 				if (allLinksUrl) {
 					chunk(req, res, allLinksUrl, badgeReviews, new Date(), 0, 0);
 				}
+			} else {
+				console.log('error', error);
+				res.end();
 			}
 		});
 	});
