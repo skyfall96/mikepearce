@@ -1,4 +1,4 @@
-module.exports = function(req, res, url, badgeReviews, timeStart, pages) {
+module.exports = function(req, res, url, badgeReviews, timeStart, pages, reviewCount) {
 	var request = require('request');
 	var cheerio = require('cheerio');
 	var chunk = require('./chunkReviews');
@@ -42,13 +42,15 @@ module.exports = function(req, res, url, badgeReviews, timeStart, pages) {
 
 					badgeReviews[badgeName].stars.push(getStars($review));
 					badgeReviews[badgeName].reviews.push($review.html());
+
+					reviewCount += 1;
 				});
 			});
 
 			if (nextPageUrl && !isTimeToStop(timeStart)) {
-				chunk(req, res, nextPageUrl, badgeReviews, timeStart, pages)
+				chunk(req, res, nextPageUrl, badgeReviews, timeStart, pages, reviewCount)
 			} else {
-				format(req, res, badgeReviews, timeStart, pages);
+				format(req, res, badgeReviews, timeStart, pages, reviewCount);
 			}
 		}
 	});
