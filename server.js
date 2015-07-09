@@ -17,6 +17,11 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req, res) {
+	res.status(404).render('error/404', {
+		title: 'Page Not Found'
+	});
+});
 
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());

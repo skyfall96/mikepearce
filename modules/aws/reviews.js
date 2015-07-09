@@ -38,7 +38,9 @@ module.exports = function(req, res, asin) {
 				console.log('Got a response!');
 				var $ = cheerio.load(html);
 
-				var allLinksUrl = $('.crAvgStars').find('a').attr('href');
+				var allLinksUrl = $('.small').find('a').attr('href');
+
+				console.log('All links URL', allLinksUrl);
 				
 				if (allLinksUrl) {
 					chunk(req, res, allLinksUrl, badgeReviews, new Date(), 0, 0);

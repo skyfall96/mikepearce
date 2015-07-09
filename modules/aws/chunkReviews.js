@@ -11,7 +11,7 @@ module.exports = function(req, res, url, badgeReviews, timeStart, pages, reviewC
 			
 			var $ = cheerio.load(html);
 
-			var $productReviews = $('#productReviews td > div');
+			var $productReviews = $('#cm_cr-review_list > div');
 			var nextPageUrl = getNextPageUrl($);
 
 			pages += 1;
@@ -114,10 +114,10 @@ module.exports = function(req, res, url, badgeReviews, timeStart, pages, reviewC
 	}
 
 	function getNextPageUrl($) {
-		var $lastUrl = $('.paging a').last();
+		var $lastUrl = $('.a-last a');
 
 		if ($lastUrl.text().indexOf('Next') >= 0) {
-			return $lastUrl.attr('href');
+			return 'http://www.amazon.com' + $lastUrl.attr('href');
 		}
 
 		return false;
