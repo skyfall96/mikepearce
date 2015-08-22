@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var http = require('http');
 var path = require('path');
+var autoprefixer = require('express-autoprefixer');
+var cssRoot = '/public/stylesheets';
 
 global.MP = require('./MP')(app);
 global._ = require('underscore')._;
@@ -14,6 +16,8 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(autoprefixer({ browsers: 'last 2 versions', cascade: false }));
+app.use(express.static(cssRoot));
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));

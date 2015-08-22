@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title><%= title %></title>
+		<meta id="viewport" name="viewport" content="width=500">
 		<link href="//fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,700|Metrophobic" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.min.css" />
 		<link rel="stylesheet" href="/stylesheets/mikepearce.css" />
@@ -17,30 +18,61 @@
 
 		<div class="links">
 			<span>
-				<a href="http://github.com/mikeyroy" title="Github" class="webicon large github"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="http://github.com/mikeyroy" title="Github" class="webicon large github"></a>
+				</div>
 			</span>
 			<span>
-				<a href="http://www.linkedin.com/in/mikeyroy/" title="LinkedIn" class="webicon large linkedin"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="http://www.linkedin.com/in/mikeyroy/" title="LinkedIn" class="webicon large linkedin"></a>
+				</div>
 			</span>
 			<span>
-				<a href="http://blog.mikepearce.us/" title="Personal Blog" class="webicon large wordpress"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="http://blog.mikepearce.us/" title="Personal Blog" class="webicon large wordpress"></a>
+				</div>
 			</span>
 			<span>
-				<a href="http://twitter.com/mikeyroy" title="Twitter" class="webicon large twitter"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="http://twitter.com/mikeyroy" title="Twitter" class="webicon large twitter"></a>
+				</div>
 			</span>
 			<span>
-				<a href="http://plus.google.com/u/0/+mikeyroy/" title="Google+" class="webicon large googleplus"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="http://plus.google.com/u/0/+mikeyroy/" title="Google+" class="webicon large googleplus"></a>
+				</div>
 			</span>
 			<span>
-				<a href="https://www.goodreads.com/user/show/11199611-mike-pearce" title="GoodReads" class="webicon large goodreads"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="https://www.goodreads.com/user/show/11199611-mike-pearce" title="GoodReads" class="webicon large goodreads"></a>
+				</div>
 			</span>
 			<span>
-				<a href="http://500px.com/mikeyroy" title="500px" class="webicon large f500px"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="http://500px.com/mikeyroy" title="500px" class="webicon large f500px"></a>
+				</div>
 			</span>
 			<span>
-				<a href="mailto:contact@mikepearce.us" title="Contact Me" class="webicon large mail"></a>
+				<div class="hex"></div>
+				<div class="hex inner">
+					<a href="mailto:contact@mikepearce.us" title="Contact Me" class="webicon large mail"></a>
+				</div>
 			</span>
 		</div>
+		<svg width="0" height="0">
+			<defs>
+				<clipPath id="hexborder"  clipPathUnits="objectBoundingBox">
+					<polygon points="50 0, 100 25, 100 75, 50 100, 0 75, 0 25, 50 0, 52 5, 5 27, 5 73, 50 95, 95 73, 95 27, 50 5 "></polygon>
+				</clipPath>
+			</defs>
+		</svg>
 
 		<input type="hidden" id="commandLine" class="commandLine" />
 

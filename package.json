@@ -1,6 +1,6 @@
 {
   "name": "mikepearce",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "server.js"
@@ -9,6 +9,7 @@
     "express": "3.x",
     "underscore": "~1.5.2",
     "stylus": "~0.41.3",
+    "express-autoprefixer": "latest",
     "ejs": "~0.8.5",
     "path": "~0.4.9",
     "passport-google": "^0.3.0",
