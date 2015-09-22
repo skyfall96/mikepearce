@@ -30,7 +30,7 @@ app.use(static('/public/stylesheets'));
 app.use(static(path.join(__dirname, 'public')));
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 
-if ('development' == app.get('env')) {
+if (app.get('env') === 'development') {
 	app.use(errorHandler());
 }
 
