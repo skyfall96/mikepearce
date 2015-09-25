@@ -38,61 +38,81 @@ a:active {
 	height: 220px;
 }
 
-.links > span {
+.hex-shell {
 	display: inline-block;
 	margin: 20px;
 	position: absolute;
+	width: 94px;
+	height: 104px;
 }
 
-.links > span:nth-child(1) { /* github */
+.hex-shell:nth-child(1) { /* github */
 	top: 0px;
 	left: 48px;
 }
 
-.links > span:nth-child(5) { /* g+ */
+.hex-shell:nth-child(5) { /* g+ */
 	top: 0px;
 	left: 244px;
 }
 
-.links > span:nth-child(7) { /* 500px */
+.hex-shell:nth-child(7) { /* 500px */
 	top: 0px;
 	left: 146px;
 }
 
-.links > span:nth-child(8) { /* email */
+.hex-shell:nth-child(8) { /* email */
 	top: 0px;
 	left: 342px;
 }
 
-.links > span:nth-child(2) { /* linkedin */
+.hex-shell:nth-child(2) { /* linkedin */
 	top: 82px;
 	left: 0px;
 }
 
-.links > span:nth-child(3) { /* wordpress */
+.hex-shell:nth-child(3) { /* wordpress */
 	top: 82px;
 	left: 196px;
 }
 
-.links > span:nth-child(4) { /* twitter */
+.hex-shell:nth-child(4) { /* twitter */
 	top: 82px;
 	left: 98px;
 }
 
-.links > span:nth-child(6) { /* goodreads */
+.hex-shell:nth-child(6) { /* goodreads */
 	top: 82px;
 	left: 294px;
 }
 
-.commandLine {
-	position: fixed;
-	bottom: 0;
+.hex {
+	width: 94px;
+	height: 104px;
+	position: absolute;
+	top: 0;
 	left: 0;
-	width: 100%;
-	padding: 10px;
-	font-size: 16px;
 }
 
+.hex-inner {
+	width: 84px;
+	height: 94px;
+	position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.hex-center {
+	width: 85px;
+	height: 95px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/*
 .hex {
 	width: 94px;
 	height: 104px;
@@ -119,3 +139,4 @@ a:active {
 	align-items: center;
 	justify-content: center;
 }
+*/
