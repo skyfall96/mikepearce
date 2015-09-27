@@ -44,6 +44,20 @@ a:active {
 	position: absolute;
 	width: 94px;
 	height: 104px;
+	perspective: 1000px;
+}
+
+.hex-shell:hover {
+	animation: 0.3s rotater forwards;
+}
+
+@keyframes rotater {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(360deg);
+	}
 }
 
 .hex-shell:nth-child(1) { /* github */
@@ -67,22 +81,22 @@ a:active {
 }
 
 .hex-shell:nth-child(2) { /* linkedin */
-	top: 82px;
+	top: 74px;
 	left: 0px;
 }
 
 .hex-shell:nth-child(3) { /* wordpress */
-	top: 82px;
+	top: 74px;
 	left: 196px;
 }
 
 .hex-shell:nth-child(4) { /* twitter */
-	top: 82px;
+	top: 74px;
 	left: 98px;
 }
 
 .hex-shell:nth-child(6) { /* goodreads */
-	top: 82px;
+	top: 74px;
 	left: 294px;
 }
 
