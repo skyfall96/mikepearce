@@ -1,53 +1,76 @@
 var MP = {
-	$commandLine: null,
-
 	initialize: function() {
-		this.setupCommandLine();
+		this.setupAudio();
 	},
 
-	setupCommandLine: function() {
-		this.$commandLine = document.getElementById('commandLine');
+	setupAudio: function() {
+		var spinAudio = [];
+		spinAudio.push(getNextAudio('spin'));
 
-		this.$commandLine.addEventListener('keyup', _.bind(this.listenToCommandLine, this));
+		var clickAudio = [];
+		clickAudio.push(getNextAudio('click'));
 
-		this.$commandLine.focus();
-	},
-
-	listenToCommandLine: function(evt) {
-		if (event.which !== 13) { //only care if enter/return is pressed
-			return;
-		}
-
-		var command = window.btoa(evt.target.value);
-
-		if (!command.length) {
-			return;
-		}
-
-		this.clearCommandLine();
-
-		switch (command) {
-			case 'YWRkIHN0b2Nr':
-				this.executeAlphaSequence();
-				break;
-			case 'dmlldyBzdG9ja3M=':
-				this.executeBetaSequence();
-				break;
-		}
-	},
-
-	clearCommandLine: function() {
-		this.$commandLine.value = '';
-	},
-
-	executeAlphaSequence: function() {
-		var alphaModal = new MP.modal({
-			url: 'http://localhost:8080/view/stock/add'
+		[].slice.call(document.getElementsByClassName('hex')).forEach(function(hex) {
+			hex.addEventListener('mouseover', function() {
+				play('spin');
+			});
 		});
-		alphaModal.open();
-	},
 
-	executeBetaSequence: function() {
+		[].slice.call(document.getElementsByClassName('webicon')).forEach(function(webicon) {
+			webicon.addEventListener('click', function() {
+				play('click');
+			});
+		});
 
+		function play(type) {
+			var audio = getNextAudio(type);
+			audio.play();
+		}
+
+		function getNextAudio(type) {
+			var collection;
+
+			switch (type) {
+				case 'click':
+						collection = clickAudio;
+					break;
+				case 'spin':
+						collection = spinAudio;
+					break;
+			}
+
+			var audio = collection.shift();
+			if (!audio) {
+				audio = createNewAudio(type, collection);
+			}
+
+			return audio;
+		}
+
+		function createNewAudio(type, collection) {
+			var audio = new Audio();
+
+			if (audio.canPlayType('audio/ogg')) {
+				audio.src = '/audio/' + type + '.ogg';
+			} else if (audio.canPlayType('audio/mp3')) {
+				audio.src = '/audio/' + type + '.mp3';
+			}
+
+			if (type === 'spin') {
+				audio.duration = 0.03;
+				audio.volume = 0.3;
+			} else if ('click') {
+				audio.duration = 0.015
+				audio.volume = 1;
+			}
+
+			audio.preload = 'auto';
+			audio.load();
+			audio.addEventListener('ended', function() {
+				collection.push(audio);
+			});
+
+			return audio;
+		}
 	}
 };
