@@ -1,6 +1,7 @@
 var MP = {
 	initialize: function() {
-		this.setupAudio();
+		// this.setupAudio();
+		this.setupAnimations();
 	},
 
 	setupAudio: function() {
@@ -71,6 +72,33 @@ var MP = {
 			});
 
 			return audio;
+		}
+	},
+
+	setupAnimations: function() {
+		[].slice.call(document.getElementsByClassName('webicon')).forEach(function(hex) {
+			hex.addEventListener('click', handleAnimation);
+		});
+
+		function handleAnimation(evt) {
+			evt.preventDefault();
+
+			var hex = evt.target.parentNode.parentNode;
+
+			hex.classList.add('swing');
+			hex.addEventListener('animationend', function() {
+				hex.removeEventListener('animationend', function() {});
+				hex.classList.add('drop');
+				hex.classList.remove('swing');
+				hex.addEventListener('animationend', function() {
+					hex.removeEventListener('animationend', function() {});
+					hex.classList.remove('drop');
+					hex.classList.add('clank');
+					hex.addEventListener('animationend', function() {
+						window.location.href = evt.target.href;
+					});
+				});
+			});
 		}
 	}
 };
