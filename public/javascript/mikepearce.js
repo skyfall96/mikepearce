@@ -90,14 +90,9 @@ var MP = {
 				hex.removeEventListener('animationend', function() {});
 				hex.classList.add('drop');
 				hex.classList.remove('swing');
-				hex.addEventListener('animationend', function() {
-					hex.removeEventListener('animationend', function() {});
-					hex.classList.remove('drop');
-					hex.classList.add('clank');
-					hex.addEventListener('animationend', function() {
-						window.location.href = evt.target.href;
-					});
-				});
+				setTimeout(function() {
+					window.location.href = evt.target.href;
+				}, 250);
 			});
 		}
 	}

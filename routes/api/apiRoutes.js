@@ -6,6 +6,6 @@ module.exports = function(app) {
 
 	app.get('/api/background', function(req, res) {
 		var image = require('../../modules/backgrounds/getRandomImage')(req, res);
-		res.sendfile(image);
+		res.sendFile(image);
 	});
 };

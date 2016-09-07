@@ -168,7 +168,7 @@ a:active {
 
 .drop {
   transform: translate3d(0, 0, 0) rotateZ(180deg);
-  animation: 0.25s drop ease-in forwards;
+  animation: 2.5s drop ease-in forwards;
 }
 
 .drop:after {
@@ -186,7 +186,7 @@ a:active {
 
 @keyframes drop {
   100% {
-    transform: translate3d(0, 100px, 0) rotateZ(180deg);
+    transform: translate3d(0, 10000px, 0) rotateZ(180deg);
   }
 }
 
@@ -195,32 +195,5 @@ a:active {
     transform: translate3d(0, 0, 0);
     left: 0;
     width: 80px;
-  }
-}
-
-.clank {
-  transform: translate3d(0, 100px, 0) rotateZ(180deg) rotateX(0deg) skewX(0deg);
-  animation: 0.15s clank forwards;
-	transform-origin: bottom center;
-	perspective-origin: 50% 100%;
-	perspective: 94px;
-}
-
-.clank:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 84px;
-  height: 3px;
-  box-shadow: 0 0 8px #000;
-}
-
-@keyframes clank {
-	50% {
-		transform: translate3d(0, 110px, 0) rotateZ(180deg) rotateX(-30deg) skewX(-1deg);
-	}
-  100% {
-    transform: translate3d(0, 150px, 0) rotateZ(180deg) rotateX(-60deg) skewX(-2deg);
   }
 }
