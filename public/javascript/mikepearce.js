@@ -84,7 +84,7 @@ var MP = {
 		var currentRotation = 180;
 		var multiplier = 1;
 		while (currentRotation > 0) {
-			currentRotation = Math.floor(Math.SQRT1_2 * currentRotation);
+			currentRotation = Math.floor(currentRotation * 0.8);
 			degrees.push(currentRotation * multiplier + 180);
 			multiplier *= -1;
 		}
@@ -99,8 +99,8 @@ var MP = {
 				evt.preventDefault();
 
 				var swing = hex.animate(degrees, {
-					duration: 3400,
-					easing: 'cubic-bezier(0.8, 0.7, 0.6, 0.5)',
+					duration: 3800,
+					easing: 'cubic-bezier(0.8, 0.8, 0.8, 0.8)',
 					fill: 'forwards'
 				});
 
