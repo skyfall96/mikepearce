@@ -80,20 +80,45 @@ var MP = {
 			hex.addEventListener('click', handleAnimation);
 		});
 
-		function handleAnimation(evt) {
-			evt.preventDefault();
+		var degrees = [];
+		var currentRotation = 180;
+		var multiplier = 1;
+		while (currentRotation > 0) {
+			currentRotation = Math.floor(Math.SQRT1_2 * currentRotation);
+			degrees.push(currentRotation * multiplier + 180);
+			multiplier *= -1;
+		}
+		degrees = degrees.map(function(deg) {
+			return { transform: 'translate3d(0, 0, 0) rotateZ(' + deg + 'deg)' };
+		});
 
+		function handleAnimation(evt) {
 			var hex = evt.target.parentNode.parentNode;
 
-			hex.classList.add('swing');
-			hex.addEventListener('animationend', function() {
-				hex.removeEventListener('animationend', function() {});
-				hex.classList.add('drop');
-				hex.classList.remove('swing');
-				setTimeout(function() {
-					window.location.href = evt.target.href;
-				}, 250);
-			});
+			if (hex.animate) {
+				evt.preventDefault();
+
+				var swing = hex.animate(degrees, {
+					duration: 3400,
+					easing: 'cubic-bezier(0.8, 0.7, 0.6, 0.5)',
+					fill: 'forwards'
+				});
+
+				swing.onfinish = function() {
+					var drop = hex.animate([
+						{ transform: 'translate3d(0, 0, 0) rotateZ(180deg)' },
+						{ transform: 'translate3d(0, ' + window.innerHeight + 'px, 0) rotateZ(180deg)' }
+					], {
+						duration: 550,
+						easing: 'ease-in',
+						fill: 'forwards'
+					});
+
+					drop.onfinish = function() {
+						window.location.href = evt.target.href;
+					};
+				};
+			}
 		}
 	}
 };

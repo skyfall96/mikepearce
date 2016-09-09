@@ -8,6 +8,7 @@ body {
 	background: url(/api/background) no-repeat center center fixed;
 	background-size: 100%;
 	background-size: cover;
+	overflow-y: hidden;
 }
 
 .bg-cover {
@@ -63,20 +64,6 @@ a:active {
 	transform-origin: bottom center;
 }
 
-.hex-shell:hover {
-	/*animation: 0.3s rotater forwards;*/
-	z-index: 1000;
-}
-
-@keyframes rotater {
-	0% {
-		transform: rotateY(0deg);
-	}
-	100% {
-		transform: rotateY(360deg);
-	}
-}
-
 .hex-shell:nth-child(1) { /* github */
 	top: 0px;
 	left: 48px;
@@ -126,74 +113,4 @@ a:active {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.swing {
-  animation: 2.5s swing forwards;
-  transform: translate3d(0, 0, 0) rotateZ(0deg);
-}
-
-@keyframes swing {
-  10% {
-    transform: translate3d(0, 0, 0) rotateZ(265deg);
-  }
-  20% {
-    transform: translate3d(0, 0, 0) rotateZ(110deg);
-  }
-  30% {
-    transform: translate3d(0, 0, 0) rotateZ(245deg);
-  }
-  40% {
-    transform: translate3d(0, 0, 0) rotateZ(120deg);
-  }
-  50% {
-    transform: translate3d(0, 0, 0) rotateZ(225deg);
-  }
-  60% {
-    transform: translate3d(0, 0, 0) rotateZ(140deg);
-  }
-  70% {
-    transform: translate3d(0, 0, 0) rotateZ(205deg);
-  }
-  80% {
-    transform: translate3d(0, 0, 0) rotateZ(160deg);
-  }
-  90% {
-    transform: translate3d(0, 0, 0) rotateZ(185deg);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) rotateZ(180deg);
-  }
-}
-
-.drop {
-  transform: translate3d(0, 0, 0) rotateZ(180deg);
-  animation: 2.5s drop ease-in forwards;
-}
-
-.drop:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 41px;
-  width: 2px;
-  height: 2px;
-  box-shadow: 0px -3px 6px #000;
-  transform: translate3d(0, -100px, 0);
-  animation: 0.24s dropshadow ease-in forwards;
-	transform-origin: bottom center;
-}
-
-@keyframes drop {
-  100% {
-    transform: translate3d(0, 10000px, 0) rotateZ(180deg);
-  }
-}
-
-@keyframes dropshadow {
-  100% {
-    transform: translate3d(0, 0, 0);
-    left: 0;
-    width: 80px;
-  }
 }
