@@ -1,5 +1,1 @@
-exports.index = function(req, res) {
-	res.render('indexView', {
-		title: 'Mike Pearce'
-	});
-};
+exports.index = (req, res) => res.render('indexView', { title: 'Mike Pearce' });

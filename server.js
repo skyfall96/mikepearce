@@ -1,17 +1,17 @@
-var express = require('express');
-var app = express();
-var router = express.Router();
-var http = require('http');
-var path = require('path');
-var autoprefixer = require('express-autoprefixer');
-var compression = require('compression');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var static = require('serve-static');
-var stylus = require('stylus');
-var methodOverride = require('method-override');
-var errorHandler = require('errorhandler');
+let express = require('express');
+let app = express();
+let router = express.Router();
+let http = require('http');
+let path = require('path');
+let autoprefixer = require('express-autoprefixer');
+let compression = require('compression');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let bodyParser = require('body-parser');
+let static = require('serve-static');
+let stylus = require('stylus');
+let methodOverride = require('method-override');
+let errorHandler = require('errorhandler');
 
 global.MP = require('./MP')(app);
 global._ = require('underscore')._;
@@ -37,12 +37,12 @@ if (app.get('env') === 'development') {
 require('./routes/routes')(router);
 app.use('/', router);
 
-app.use(function(req, res) {
+app.use((req, res) => {
 	res.status(404).render('error/404', {
 		title: 'Page Not Found'
 	});
 });
 
-var server = http.createServer(app).listen(MP.getPort(), function(){
-	console.log('Express server listening on port ' + MP.getPort());
-});
+let server = http
+	.createServer(app)
+	.listen(MP.getPort(), () => console.log('Express server listening on port ' + MP.getPort()));

@@ -1,11 +1,8 @@
-module.exports = function(app) {
-	var awsRoutes = require('./AWS/awsRoutes');
-	var request = require('request');
+let request = require('request');
 
-	app.get('/api/aws/:asin/reviews', awsRoutes.getReviews);
-
-	app.get('/api/background', function(req, res) {
-		var image = require('../../modules/backgrounds/getRandomImage')(req, res);
+module.exports = app => {
+	app.get('/api/background', (req, res) => {
+		let image = require('../../modules/backgrounds/getRandomImage')(req, res);
 		res.sendFile(image);
 	});
 };
