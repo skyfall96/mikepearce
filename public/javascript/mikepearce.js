@@ -99,7 +99,7 @@ var MP = {
 				evt.preventDefault();
 
 				var swing = hex.animate(degrees, {
-					duration: 3800,
+					duration: 4400,
 					easing: 'cubic-bezier(0.8, 0.8, 0.8, 0.8)',
 					fill: 'forwards'
 				});
