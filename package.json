@@ -6,6 +6,7 @@
     "start": "server.js"
   },
   "dependencies": {
+    "aqi-bot": "^1.1.1",
     "body-parser": "^1.14.0",
     "compression": "^1.5.2",
     "ejs": "~0.8.5",
@@ -16,6 +17,7 @@
     "morgan": "^1.6.1",
     "path": "~0.4.9",
     "postcss": "4.1.16",
+    "q": "^1.5.1",
     "request": "latest",
     "serve-favicon": "^2.3.0",
     "serve-static": "^1.10.0",
