@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<meta id="viewport" name="viewport" content="width=500">
+		<link href="//fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,700|Metrophobic" rel="stylesheet" type="text/css">
+		<style>
+		  body {
+				background-color: green;
+				font-family: Metrophobic;
+				text-align: center;
+				height: 100%;
+			}
+
+			.title {
+  			font-family: 'Alegreya Sans SC', sans-serif;
+			}
+
+			.aqi {
+				font-size: 12vw;
+				padding: 3vh 0;
+			}
+
+			.message {
+				font-size: 3vw;
+			}
+
+			.columns {
+				columns: 3;
+				font-size: 5vw;
+				padding: 12vh 5vw 8vh;
+			}
+
+			.columns .title {
+				display: block;
+			}
+
+			.green {
+				background-color: #00cc00;
+			}
+
+			.yellow {
+				background-color: #ffff00;
+			}
+
+			.orange {
+				background-color: #ff6600;
+			}
+
+			.red {
+				background-color: #ff0000
+			}
+
+			,violet {
+				background-color: #99004c;
+			}
+
+			.hazard {
+				background-color: #730023;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="aqi">
+		  <span class="title">AQI</span>
+			<span id="aqi">---</span>
+		</div>
+		<div class="message">
+			Air quality is <span id="category">---</span>.
+			<span id="message"></span>
+		</div>
+		<div class="columns">
+			<div class="temperature">
+				<span class="title">Temperature</span>
+				<span id="temperature">---</span>&deg;
+			</div>
+			<div class="humidity">
+				<span class="title">Humidity</span>
+				<span id="humidity">---</span>%
+			</div>
+			<div class="pressure">
+				<span class="title">Pressure</span>
+				<span id="pressure">---</span>
+			</div>
+		</div>
+		<div class="lastUpdated">
+			<span class="title">Last updated:</span>
+			<span id="lastUpdated">---</span>
+		</div>
+
+		<script type="text/javascript" src="javascript/aqi.js"></script>
+	</body>
+</html>

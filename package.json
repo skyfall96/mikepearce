@@ -9,7 +9,7 @@
     "aqi-bot": "^1.1.1",
     "body-parser": "^1.14.0",
     "compression": "^1.5.2",
-    "ejs": "~0.8.5",
+    "ejs": "~2.5.5",
     "errorhandler": "^1.4.2",
     "express": "4.x",
     "express-autoprefixer": "4.0.4",

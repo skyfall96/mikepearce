@@ -4,7 +4,7 @@ let AQI = require('aqi-bot');
 module.exports = app => {
 	app.get('/api/background', (req, res) => {
 		let image = require('../../modules/backgrounds/getRandomImage')(req, res);
-		res.sendFile(image);
+		res.status(200).sendFile(image);
 	});
 
 	app.get('/api/aqi', (req, res) => {
@@ -22,7 +22,7 @@ module.exports = app => {
 				aqiResult.humidity = parseFloat(json.results[0].humidity);
 				aqiResult.pressure = parseFloat(json.results[0].pressure);
 				aqiResult.ts = json.results[0].LastSeen * 1000;
-				res.send(aqiResult);
+				res.status(200).send(aqiResult);
 			});
 		});
 	});
