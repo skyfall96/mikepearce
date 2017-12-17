@@ -40,7 +40,8 @@ let refresh = () => {
         default:
           colorClass = 'hazard';
       }
-      document.body.classList.replace(document.body.classList.value, colorClass);
+      document.body.className = '';
+      document.body.classList.add(colorClass);
     });
   });
 }
