@@ -20,7 +20,7 @@ module.exports = app => {
 			AQI.AQICalculator.getAQIResult('PM2.5', pm25avg).then(aqiResult => {
 				aqiResult.temperature = parseInt((json.results[0].temp_f - 32) * 0.5556 * 10) / 10;
 				aqiResult.humidity = parseFloat(json.results[0].humidity);
-				aqiResult.pressure = parseFloat(json.results[0].pressure);
+				aqiResult.pressure = parseInt(json.results[0].pressure);
 				aqiResult.ts = json.results[0].LastSeen * 1000;
 				res.status(200).send(aqiResult);
 			});

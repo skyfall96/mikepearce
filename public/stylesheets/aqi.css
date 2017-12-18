@@ -1,0 +1,109 @@
+body {
+  font-family: Metrophobic;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pulse {
+  animation: pulse 200s linear infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.title {
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.aqi {
+  font-size: 12vw;
+  padding: 3vh 0;
+}
+
+.message {
+  font-size: 3vw;
+}
+
+.columns {
+  columns: 3;
+  font-size: 10vw;
+  padding: 6vh 4vw;
+}
+
+.columns .title {
+  display: block;
+  font-size: 4vw;
+}
+
+.green {
+  background-color: #00cc00;
+  animation: green 100s infinite alternate;
+}
+
+@keyframes green {
+  100% {
+    background-color: #0a6001;
+  }
+}
+
+.yellow {
+  background-color: #ffff00;
+  animation: yellow 100s infinite alternate;
+}
+
+@keyframes yellow {
+  100% {
+    background-color: #bab233;
+  }
+}
+
+.orange {
+  background-color: #ff6600;
+  animation: orange 100s infinite alternate;
+}
+
+@keyframes orange {
+  100% {
+    background-color: #a54403;
+  }
+}
+
+.red {
+  background-color: #ff0000;
+  animation: red 100s infinite alternate;
+}
+
+@keyframes red {
+  100% {
+    background-color: #a20808;
+  }
+}
+
+,violet {
+  background-color: #99004c;
+  animation: violet 100s infinite alternate;
+}
+
+@keyframes violet {
+  100% {
+    background-color: #67183f;
+  }
+}
+
+.hazard {
+  background-color: #730023;
+  animation: hazard 100s infinite alternate;
+}
+
+@keyframes hazard {
+  100% {
+    background-color: #3f0617;
+  }
+}
