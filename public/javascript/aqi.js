@@ -18,8 +18,8 @@ let refresh = () => {
   fetch('/api/aqi').then((response) => {
     response.json().then((data) => {
       aqi.innerHTML = data.aqi;
-      category.innerHTML = data.category.toLowerCase();
-      message.innerHTML = data.generalMessage === 'None' ? '' : data.generalMessage;
+      category.innerHTML = data.category.toLowerCase() + '.';
+      message.innerHTML = data.generalMessage === 'None' ? '' : data.generalMessage + '.';
       temperature.innerHTML = data.temperature;
       humidity.innerHTML = data.humidity;
       pressure.innerHTML = data.pressure;
