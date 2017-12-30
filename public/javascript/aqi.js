@@ -1,4 +1,5 @@
 let updateInterval = 5; // minutes
+let refreshInterval;
 
 let aqi = document.getElementById('aqi');
 let temperature = document.getElementById('temperature');
@@ -10,6 +11,10 @@ let category = document.getElementById('category');
 let message = document.getElementById('message');
 
 let refresh = () => {
+  if (!refreshInterval) {
+    refreshInterval = setInterval(refresh, updateInterval * 60 * 1000);
+  }
+  
   fetch('/api/aqi').then((response) => {
     response.json().then((data) => {
       aqi.innerHTML = data.aqi;
@@ -46,5 +51,14 @@ let refresh = () => {
   });
 }
 
-setInterval(refresh, updateInterval * 60 * 1000);
+document.onvisibilitychange = evt => {
+  if (refreshInterval) {
+    clearInterval(refreshInterval);
+    refreshInterval = null;
+  }
+  if (!document.hidden) {
+    refresh();
+  }
+}
+
 refresh();
