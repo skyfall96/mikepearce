@@ -5,6 +5,7 @@ let aqi = document.getElementById('aqi');
 let temperature = document.getElementById('temperature');
 let humidity = document.getElementById('humidity');
 let pressure = document.getElementById('pressure');
+let pressureScale = document.getElementById('pressure-scale');
 let lastUpdated = document.getElementById('lastUpdated');
 
 let category = document.getElementById('category');
@@ -14,7 +15,7 @@ let refresh = () => {
   if (!refreshInterval) {
     refreshInterval = setInterval(refresh, updateInterval * 60 * 1000);
   }
-  
+
   fetch('/api/aqi').then((response) => {
     response.json().then((data) => {
       aqi.innerHTML = data.aqi;
@@ -23,6 +24,7 @@ let refresh = () => {
       temperature.innerHTML = data.temperature;
       humidity.innerHTML = data.humidity;
       pressure.innerHTML = data.pressure;
+      pressureScale.style.top = ((1029 - data.pressure) / (1029 - 1001) * 10) + 'vw'; //SF normal high is 1029, normal low is 1001, record high is 1036, record low is 976, scale height is 10 vw's
       lastUpdated.innerHTML = (new Date(data.ts)).toTimeString().split(' ')[0];
 
       let colorClass;

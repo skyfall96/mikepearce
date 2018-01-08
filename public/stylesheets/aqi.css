@@ -32,14 +32,64 @@ body {
 }
 
 .columns {
-  columns: 3;
+  display: flex;
   font-size: 10vw;
   padding: 6vh 4vw;
+}
+
+.columns > div {
+  position: relative;
+  flex: 1;
 }
 
 .columns .title {
   display: block;
   font-size: 4vw;
+}
+
+.scale {
+  transform: scale(1.2);
+  position: absolute;
+  top: 4.2vw;
+  right: 2vw;
+  width: 1vw;
+  height: 11vw;
+  border-left: 0.1vw solid black;
+  box-sizing: border-box;
+  margin-left: 1vw;
+}
+
+.scale:before,
+.scale:after {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  border: 0.25vw solid black;
+  border-radius: 1vw;
+  width: 1vw;
+  height: 1vw;
+  left: -0.55vw;
+  background-color: #ffffff;
+}
+
+.scale:before {
+  top: 0;
+}
+
+.scale:after {
+  bottom: 0;
+}
+
+.scale span {
+  position: absolute;
+  margin: 0.25vw;
+  left: -0.55vw;
+  background-color: red;
+  width: 0.5vw;
+  height: 0.5vw;
+  border-radius: 0.5vw;
+  box-sizing: border-box;
+  z-index: 1
 }
 
 .green {
