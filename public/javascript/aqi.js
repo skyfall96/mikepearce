@@ -11,6 +11,15 @@ let lastUpdated = document.getElementById('lastUpdated');
 let category = document.getElementById('category');
 let message = document.getElementById('message');
 
+let HPA = {
+  MIN: 1000,
+  MAX: 1029,
+  CORRECTION: 8 // the sensor is consistently 8 less than official readings
+}
+
+let TEMPCORRECTION = -4.2;
+let HUMIDITYCORRECTION = 21;
+
 let refresh = () => {
   if (!refreshInterval) {
     refreshInterval = setInterval(refresh, updateInterval * 60 * 1000);
@@ -21,10 +30,17 @@ let refresh = () => {
       aqi.innerHTML = data.aqi;
       category.innerHTML = data.category.toLowerCase() + '.';
       message.innerHTML = data.generalMessage === 'None' ? '' : data.generalMessage + '.';
-      temperature.innerHTML = data.temperature;
-      humidity.innerHTML = data.humidity;
-      pressure.innerHTML = data.pressure;
-      pressureScale.style.top = ((1029 - data.pressure) / (1029 - 1001) * 10) + 'vw'; //SF normal high is 1029, normal low is 1001, record high is 1036, record low is 976, scale height is 10 vw's
+      temperature.innerHTML = parseInt(data.temperature + TEMPCORRECTION);
+      humidity.innerHTML = parseInt(data.humidity + HUMIDITYCORRECTION);
+      pressure.innerHTML = parseInt(data.pressure += HPA.CORRECTION); 
+      
+      let scaleReading = (HPA.MAX - data.pressure) / (HPA.MAX - HPA.MIN) * 10; //SF normal high is 1029, normal low is 1000, record high is 1036, record low is 976, scale height is 10 vw's
+      if (scaleReading < 0) {
+        scaleReading = 0;
+      } else if (scaleReading > 10) {
+        scaleReading = 10;
+      }
+      pressureScale.style.top = scaleReading + 'vw'; 
       lastUpdated.innerHTML = (new Date(data.ts)).toTimeString().split(' ')[0];
 
       let colorClass;
