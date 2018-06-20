@@ -1,2 +1,2 @@
-User-agent *
-Sitemap: http://blog.mikepearce.us/sitemap.xml
+User-agent: *
+Disallow: /aqi

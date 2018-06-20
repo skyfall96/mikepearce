@@ -8,6 +8,7 @@
   "dependencies": {
     "aqi-bot": "^1.1.1",
     "body-parser": "^1.14.0",
+    "browser-detect": "^0.2.28",
     "compression": "^1.5.2",
     "ejs": "~2.5.5",
     "errorhandler": "^1.4.2",
