@@ -3,7 +3,7 @@
   "version": "0.0.5",
   "private": true,
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "aqi-bot": "^1.1.1",
@@ -13,6 +13,8 @@
     "errorhandler": "^1.4.2",
     "express": "4.x",
     "express-autoprefixer": "4.0.4",
+    "express-enforces-ssl": "^1.1.0",
+    "helmet": "^3.12.1",
     "method-override": "^2.3.5",
     "morgan": "^1.6.1",
     "path": "~0.4.9",
@@ -25,7 +27,7 @@
     "underscore": "~1.5.2"
   },
   "engines": {
-    "node": "7.10.1",
+    "node": "8.x.x",
     "npm": "3.8.6"
   }
 }

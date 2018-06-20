@@ -1,4 +1,4 @@
-runtime: nodejs
+runtime: nodejs8
 resources:
   cpu: 1
   memory_gb: 0.5

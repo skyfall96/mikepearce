@@ -1,21 +1,28 @@
-let express = require('express');
-let app = express();
-let router = express.Router();
-let http = require('http');
-let path = require('path');
-let autoprefixer = require('express-autoprefixer');
-let compression = require('compression');
-let favicon = require('serve-favicon');
-let logger = require('morgan');
-let bodyParser = require('body-parser');
-let static = require('serve-static');
-let stylus = require('stylus');
-let methodOverride = require('method-override');
-let errorHandler = require('errorhandler');
+const express = require('express');
+const app = express();
+const router = express.Router();
+const helmet = require('helmet');
+const express_enforces_ssl = require('express-enforces-ssl');
+const http = require('http');
+const path = require('path');
+const autoprefixer = require('express-autoprefixer');
+const compression = require('compression');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const static = require('serve-static');
+const stylus = require('stylus');
+const methodOverride = require('method-override');
+const errorHandler = require('errorhandler');
 
 global.MP = require('./MP')(app);
 global._ = require('underscore')._;
 
+if (!MP.isLocalhost()) {
+	app.use(helmet());
+	app.enable('trust proxy');
+	app.use(express_enforces_ssl());
+}
 app.set(MP.getPort());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,6 +42,7 @@ if (app.get('env') === 'development') {
 }
 
 require('./routes/routes')(router);
+
 app.use('/', router);
 
 app.use((req, res) => {

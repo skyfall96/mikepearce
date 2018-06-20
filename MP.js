@@ -1,3 +1,4 @@
 module.exports = app => ({
-	getPort: () => process.env['PORT'] || 8080
+	isLocalhost: () => !process.env.PORT,
+	getPort: () => process.env.PORT || 8080
 });
