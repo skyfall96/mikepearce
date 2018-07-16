@@ -23,6 +23,9 @@ if (!MP.isLocalhost()) {
 	app.enable('trust proxy');
 	app.use(express_enforces_ssl());
 }
+
+app.set('x-timestamp', Date.now());
+
 app.set(MP.getPort());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

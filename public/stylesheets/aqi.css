@@ -47,6 +47,10 @@ body {
   font-size: 4vw;
 }
 
+.pressure-scale {
+  top: -1000vw;
+}
+
 .scale {
   transform: scale(1.2);
   position: absolute;
