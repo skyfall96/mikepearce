@@ -81,42 +81,47 @@ a:active {
 
 .hex-shell:nth-child(1) { /* github */
 	top: 0px;
-	left: 48px;
-}
-
-.hex-shell:nth-child(5) { /* g+ */
-	top: 0px;
-	left: 244px;
-}
-
-.hex-shell:nth-child(7) { /* 500px */
-	top: 0px;
 	left: 146px;
 }
 
-.hex-shell:nth-child(8) { /* email */
-	top: 0px;
-	left: 342px;
-}
-
-.hex-shell:nth-child(2) { /* linkedin */
+.hex-shell:nth-child(5) { /* instagram */
 	top: 74px;
 	left: 0px;
 }
 
-.hex-shell:nth-child(3) { /* wordpress */
-	top: 74px;
-	left: 196px;
-}
-
-.hex-shell:nth-child(4) { /* twitter */
+.hex-shell:nth-child(7) { /* 500px */
 	top: 74px;
 	left: 98px;
 }
 
-.hex-shell:nth-child(6) { /* goodreads */
+.hex-shell:nth-child(8) { /* email */
+	top: 148px;
+	left: 244px;
+}
+
+.hex-shell:nth-child(2) { /* linkedin */
+top: 0px;
+left: 244px;
+}
+
+.hex-shell:nth-child(3) { /* wordpress */
+	top: 0px;
+	left: 48px;
+}
+
+.hex-shell:nth-child(4) { /* twitter */
 	top: 74px;
-	left: 294px;
+	left: 196px;
+}
+
+.hex-shell:nth-child(6) { /* goodreads */
+	top: 148px;
+	left: 146px;
+}
+
+.hex-shell:nth-child(9) { /* sfaqi */
+	top: 148px;
+	left: 48px;
 }
 
 .hex-center {
