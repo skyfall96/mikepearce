@@ -140,7 +140,7 @@ body {
   }
 }
 
-,violet {
+.violet {
   background-color: #99004c;
   animation: violet 100s infinite alternate;
 }
