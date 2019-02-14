@@ -8,8 +8,7 @@ module.exports = app => {
 	});
 
 	app.get('/api/aqi', (req, res) => {
-		//request('https://www.purpleair.com/json?show=3869', function(e, aqiResponse, body) {
-		request('https://www.purpleair.com/json?show=8632', function(e, aqiResponse, body) {
+		request('https://www.purpleair.com/json?show=26353', function(e, aqiResponse, body) {
 			let json = JSON.parse(body);
 			let pm25 = [];
 			json.results.forEach(function(sensor) {
