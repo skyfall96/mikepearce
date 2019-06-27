@@ -7,7 +7,7 @@ function setHeaders(req, res) {
 module.exports = app => {
   app.get('/', (req, res) => {
     setHeaders(req, res);
-    res.status(200).render('indexView', { title: 'Mike Pearce' });
+    res.status(200).render('indexView', { title: 'Mike \'Roy\' Pearce' });
   });
   app.get('/aqi', (req, res) => {
     setHeaders(req, res);
